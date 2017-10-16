@@ -1,3 +1,7 @@
+import { SpeakerDetailPage } from './../pages/speaker-detail/speaker-detail';
+import { SpeakerService } from './../services/speaker.service';
+import { ScheduleService } from './../services/schedule.service';
+import { SessionDetailPage } from './../pages/session-detail/session-detail';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { FIREBASE_CREDENTIALS } from './firebase.credential';
@@ -33,7 +37,9 @@ import { AngularFireModule } from "angularfire2";
     SchedulePage,
     TeachersPage,
     MapPage,
-    SpeakersPage
+    SpeakersPage,
+    SessionDetailPage,
+    SpeakerDetailPage
   ],
   imports: [
     BrowserModule,
@@ -52,11 +58,15 @@ import { AngularFireModule } from "angularfire2";
     SchedulePage,
     TeachersPage,
     SpeakersPage,
-    MapPage
+    MapPage,
+    SessionDetailPage,
+    SpeakerDetailPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    ScheduleService,
+    SpeakerService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

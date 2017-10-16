@@ -5,14 +5,34 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>speakers</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Speakers</ion-title>
+    <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
+  <ion-list >
+    <ion-grid fixed>
+      <ion-row align-items-stretch *ngFor="let model of speakerModels | async">
 
+        <ion-col align-self-stretch align-self-center approxItemHeight="457px">
+
+          <ion-card>
+            <ion-card-header>
+              <button ion-item detail-none (click)="goToSpeakerDetail(model.speaker)">
+                <ion-avatar item-start>
+                  <img [src]="model.speaker.profilePic" alt="Speaker profile pic">
+                </ion-avatar>
+                {{model.speaker.name}}
+              </button>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 </ion-content>

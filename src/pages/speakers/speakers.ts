@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { SpeakerDetailPage } from './../speaker-detail/speaker-detail';
+import { SpeakerService } from './../../services/speaker.service';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,11 +16,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SpeakersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  speakerModels;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private speakerService: SpeakerService) {
+    console.log(this.speakerModels);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SpeakersPage');
+
+  goToSpeakerDetail(speaker){
+    this.navCtrl.push(SpeakerDetailPage, {speaker: speaker});
+  }
+
+  ngOnInit(){
+    this.speakerModels = this.speakerService.getSpeakers();
   }
 
 }

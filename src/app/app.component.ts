@@ -1,3 +1,4 @@
+import { SpeakersPage } from './../pages/speakers/speakers';
 import { AboutPage } from './../pages/about/about';
 import { MapPage } from './../pages/map/map';
 import { TeachersPage } from './../pages/teachers/teachers';
@@ -31,7 +32,7 @@ export class MyApp {
 
   appPages: PageInterface[]=[
     { title: 'Schedule', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
-    { title: 'Teachers', name: 'TabsPage', component: TabsPage, tabComponent: TeachersPage, index: 1, icon: 'contacts' },
+    { title: 'Speakers', name: 'TabsPage', component: TabsPage, tabComponent: SpeakersPage, index: 1, icon: 'contacts' },
     { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
     { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
   ]

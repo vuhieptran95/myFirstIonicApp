@@ -1,7 +1,8 @@
+import { ScheduleService } from './../../services/schedule.service';
+import { SessionDetailPage } from './../session-detail/session-detail';
 import { Group } from './../../models/group.interface';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
-import { AngularFireList, AngularFireDatabase } from "angularfire2/database";
 
 /**
  * Generated class for the SchedulePage page.
@@ -17,11 +18,9 @@ import { AngularFireList, AngularFireDatabase } from "angularfire2/database";
 })
 export class SchedulePage {
 
-  scheduleListRef: AngularFireList<any>;
   groups;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase) {
-    this.getSchedule();
+  constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
   }
 
   ionViewDidLoad() {
@@ -35,25 +34,13 @@ export class SchedulePage {
     console.log(this.nav.getActiveChildNavs());
   }
 
-  getSchedule(){
-    return this.database.list('schedule/0/groups').snapshotChanges().map(
-      result => {
-        var groups: Group[] = [];
-        result.forEach( r => {
-          var group: Group={key: "", time: "", sessions: []};
-          group.key = r.key;
-          group.time = r.payload.val().time;
-          group.sessions = r.payload.val().sessions;
-          groups.push(group);
-       })
-       return groups; 
-      }
-    );
-    // this.database.list('schedule/0/groups').valueChanges().subscribe(console.log);
+
+  goToSessionDetail(session){
+    this.navCtrl.push(SessionDetailPage, {session: session});
   }
 
   ngOnInit(){
-    this.groups = this.getSchedule();
+    this.groups = this.scheduleService.getSchedules();
   }
 
 }
