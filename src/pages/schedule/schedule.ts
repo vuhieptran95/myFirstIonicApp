@@ -1,5 +1,5 @@
 import { Group } from './../../models/group.interface';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 import { AngularFireList, AngularFireDatabase } from "angularfire2/database";
 
@@ -18,7 +18,7 @@ import { AngularFireList, AngularFireDatabase } from "angularfire2/database";
 export class SchedulePage {
 
   scheduleListRef: AngularFireList<any>;
-  groups: Group[] = [];
+  groups;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase) {
     this.getSchedule();
@@ -36,7 +36,7 @@ export class SchedulePage {
   }
 
   getSchedule(){
-    this.database.list('schedule/0/groups').snapshotChanges().map(
+    return this.database.list('schedule/0/groups').snapshotChanges().map(
       result => {
         var groups: Group[] = [];
         result.forEach( r => {
@@ -48,8 +48,12 @@ export class SchedulePage {
        })
        return groups; 
       }
-    ).subscribe(console.log);
+    );
     // this.database.list('schedule/0/groups').valueChanges().subscribe(console.log);
+  }
+
+  ngOnInit(){
+    this.groups = this.getSchedule();
   }
 
 }
