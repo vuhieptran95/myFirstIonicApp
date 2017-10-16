@@ -1,18 +1,38 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar #mycontent>
     <ion-title>Home</ion-title>
+    <button ion-button menuToggle>Toggle Menu</button>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <h2>Welcome {{myName}} to Ionic!</h2>
   <ion-list *ngFor="let item of items">
-    <ion-item (click) = "selectItem(item)">{{item.description}}</ion-item>
+    <ion-item (click)="selectItem(item)">{{item.description}}</ion-item>
   </ion-list>
   <div text-center>
     <button ion-button color="primary" round>Save</button>
   </div>
-  <button ion-button block (click)="openMenu()">
-    Show Action Sheet
-  </button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button block (click)="openMenu()">
+          Show Action Sheet
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block color="danger" (click)="clickAlert()">Alert</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab bottom right>
+    <button ion-fab>Share</button>
+    <ion-fab-list side="top">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab>Twitter</button>
+      <button ion-fab>Youtube</button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

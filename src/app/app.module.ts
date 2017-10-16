@@ -1,8 +1,16 @@
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { FIREBASE_CREDENTIALS } from './firebase.credential';
+import { SpeakersPage } from './../pages/speakers/speakers';
+import { MapPage } from './../pages/map/map';
+import { SchedulePage } from './../pages/schedule/schedule';
 import { ItemDetailsPage } from './../pages/item-details/item-details';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
 import { MyApp } from './app.component';
+
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -11,6 +19,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TeachersPage } from "../pages/teachers/teachers";
+import { AngularFireModule } from "angularfire2";
 
 @NgModule({
   declarations: [
@@ -19,11 +29,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    ItemDetailsPage
+    ItemDetailsPage,
+    SchedulePage,
+    TeachersPage,
+    MapPage,
+    SpeakersPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(FIREBASE_CREDENTIALS)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +48,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    ItemDetailsPage
+    ItemDetailsPage,
+    SchedulePage,
+    TeachersPage,
+    SpeakersPage,
+    MapPage
   ],
   providers: [
     StatusBar,
