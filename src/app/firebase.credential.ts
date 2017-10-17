@@ -8,3 +8,14 @@ export const FIREBASE_CREDENTIALS = {
     messagingSenderId: "50064124581"
 
 }
+
+export const FIREBASE_CREDENTIALS_FLATTENED = {
+    
+    apiKey: "AIzaSyBK8PU1tcdN67IUx1cP7NMBXSHq2GWSP8E",
+    authDomain: "test-38eb2.firebaseapp.com",
+    databaseURL: "https://test-38eb2.firebaseio.com",
+    projectId: "test-38eb2",
+    storageBucket: "test-38eb2.appspot.com",
+    messagingSenderId: "446345668869"
+    
+    }

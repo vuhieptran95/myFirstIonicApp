@@ -1,11 +1,14 @@
 export interface Session{
-    key: string;
     id: string;
     name: string;
     description: string;
     location: string;
-    speakerNames: string[];
+    speakers: any[];
     timeStart: string;
     timeEnd: string;
-    tracks: string[];
+}
+
+export interface SessionModel{
+    key: string;
+    session: any;
 }

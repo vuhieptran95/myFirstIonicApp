@@ -18,29 +18,19 @@ import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 })
 export class SchedulePage {
 
-  groups;
+  sessionModels;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SchedulePage');
-  }
-
-  @ViewChild('myInputText') myInput;
-  @ViewChild(Nav) nav: Nav;
-
-  onClick(){
-    console.log(this.nav.getActiveChildNavs());
-  }
-
 
   goToSessionDetail(session){
     this.navCtrl.push(SessionDetailPage, {session: session});
   }
 
   ngOnInit(){
-    this.groups = this.scheduleService.getSchedules();
+    // this.sessionModels = this.scheduleService.getSchedules();
+    this.scheduleService.getSchedules().subscribe(console.log);
+    this.sessionModels=this.scheduleService.getSchedules();
   }
 
 }

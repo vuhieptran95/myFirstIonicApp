@@ -1,4 +1,4 @@
-import { Group } from './../models/group.interface';
+import { Session, SessionModel } from './../models/session.interface';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
@@ -12,22 +12,45 @@ export class ScheduleService {
     }
 
     getSchedules() {
-        return this.database.list('schedule/0/groups').snapshotChanges().map(
+        return this.database.list('schedule').snapshotChanges().map(
             result => {
-                var groups: Group[] = [];
+                let sessionModels:any[]=[];
                 result.forEach(r => {
-                    var group: Group = { key: "", time: "", sessions: [] };
-                    group.key = r.key;
-                    group.time = r.payload.val().time;
-                    group.sessions = r.payload.val().sessions;
-                    groups.push(group);
+                    let model: SessionModel = {
+                        key: r.key,
+                        session: r.payload.val()
+                    };
+                    model.key = r.key;
+                    model.session = r.payload.val();
+                    sessionModels.push(model);
                 })
-                return groups;
+                return sessionModels;
+            }
+        );
+    }
+
+    getSchedules2() {
+        return this.database.list('schedule').snapshotChanges().map(
+            result => {
+                let models:any[]=[];
+                result.forEach(element => {
+                    let model: SessionModel = {
+                        key: element.key,
+                        session: element.payload.val()
+                    };
+                    // model = element.payload.val();
+                    models.push(model);
+                });
+                return models;
             }
         );
     }
 
     getScheduleNameBySpeakerName(speakerName: string){
-        return this.database.list('scheduel/0/groups/1/sessions/0', ref => ref.orderByChild('location')).valueChanges();
+
+        let $key;
+        return this.database.list('schedule', 
+        ref =>ref.orderByChild('groups')
+        ).valueChanges();
     }
 }

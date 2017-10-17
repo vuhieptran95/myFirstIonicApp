@@ -16,22 +16,22 @@
 <ion-content padding>
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
-    <ion-item-group *ngFor="let group of groups | async">
+    <ion-item-group *ngFor="let model of sessionModels | async">
 
       <ion-item-divider sticky>
         <ion-label color="primary">
-          <h2>{{group.time}}</h2>
+          <h2>Test</h2>
         </ion-label>
       </ion-item-divider>
 
-      <ion-item-sliding *ngFor="let session of group.sessions" >
+      <ion-item-sliding>
 
         <button ion-item (click)="goToSessionDetail(session)">
-              <h3>{{session.name}}</h3>
+              <h3>{{model.session.name}}</h3>
               <p>
-                {{session.timeStart}} &mdash;
-                {{session.timeEnd}}:
-                {{session.location}}
+                {{model.session.timeStart}} &mdash;
+                {{model.session.timeEnd}}:
+                {{model.session.location}}
               </p>
             </button>
 
