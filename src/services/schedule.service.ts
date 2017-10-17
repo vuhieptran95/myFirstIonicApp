@@ -1,4 +1,5 @@
-import { Session, SessionModel } from './../models/session.interface';
+import { ScheduleViewModel } from './../models/viewmodels/schedule.viewmodel.interface';
+import { Session } from './../models/session.interface';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
@@ -11,37 +12,63 @@ export class ScheduleService {
 
     }
 
-    getSchedules() {
-        return this.database.list('schedule').snapshotChanges().map(
-            result => {
-                let sessionModels:any[]=[];
+    getSessionsWithTime(){
+        return this.database.list('time').snapshotChanges().map(
+            result=>{
+                let viewmodels: ScheduleViewModel[]=[];
                 result.forEach(r => {
-                    let model: SessionModel = {
-                        key: r.key,
-                        session: r.payload.val()
-                    };
-                    model.key = r.key;
-                    model.session = r.payload.val();
-                    sessionModels.push(model);
-                })
-                return sessionModels;
+                    
+                    let viewmodel: ScheduleViewModel = {
+                        time: r.key,
+                        test: r.payload.val()   
+                    }
+                    viewmodels.push(viewmodel);
+                });
+                return viewmodels;
             }
         );
     }
 
+    getSessionsWithTimeTest(){
+        
+        return this.database.list('time', ref=>ref.child('11:00 am')).valueChanges();
+    }
+
+    getSessionByKey(key: string){
+        return this.database.object('schedule/'+key).snapshotChanges().map(result=>{
+            let session: Session = result.payload.val();
+            session.key = result.key;
+            return session;
+        })
+    }
+
+    getSchedules() {
+        return this.database.list('schedule').snapshotChanges().map(
+            result => {
+                let sessions:Session[]=[];
+                result.forEach(r => {
+                    let session: Session = r.payload.val();
+                    session.key = r.key;
+                    sessions.push(session);
+                })
+                return sessions;
+            }
+        );
+    }
+
+
+
     getSchedules2() {
         return this.database.list('schedule').snapshotChanges().map(
             result => {
-                let models:any[]=[];
+                let sessions:Session[]=[];
                 result.forEach(element => {
-                    let model: SessionModel = {
-                        key: element.key,
-                        session: element.payload.val()
-                    };
+                    let session: Session = element.payload.val();
+                    session.key = element.key;
                     // model = element.payload.val();
-                    models.push(model);
+                    sessions.push(session);
                 });
-                return models;
+                return sessions;
             }
         );
     }

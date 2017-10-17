@@ -1,4 +1,3 @@
-import { SessionClass } from './../../models/session.class';
 import { Session } from './../../models/session.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -17,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SessionDetailPage {
 
-  session = new SessionClass();
+  session:Session;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.session = navParams.get('session');
     console.log(this.session);

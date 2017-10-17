@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>{{session.name}}</ion-title>
+    <ion-title *ngIf="session">{{session.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div>
+  <div *ngIf="session">
     <h1>{{session.name}}</h1>
     <h4 *ngFor="let speakerName of session.speakerNames">
       {{speakerName}}

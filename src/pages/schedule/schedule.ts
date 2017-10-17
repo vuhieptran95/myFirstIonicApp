@@ -3,6 +3,7 @@ import { SessionDetailPage } from './../session-detail/session-detail';
 import { Group } from './../../models/group.interface';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
+import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
 /**
  * Generated class for the SchedulePage page.
@@ -18,9 +19,9 @@ import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 })
 export class SchedulePage {
 
-  sessionModels;
+  sessions;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService, private database: AngularFireDatabase) {
   }
 
   goToSessionDetail(session){
@@ -29,8 +30,10 @@ export class SchedulePage {
 
   ngOnInit(){
     // this.sessionModels = this.scheduleService.getSchedules();
-    this.scheduleService.getSchedules().subscribe(console.log);
-    this.sessionModels=this.scheduleService.getSchedules();
+    // this.scheduleService.getSchedules2().subscribe(console.log);
+    // this.scheduleService.getSessionsWithTime().subscribe(console.log);
+    // this.scheduleService.getSessionsWithTimeTest().subscribe(console.log);
+    this.sessions=this.scheduleService.getSchedules();
   }
 
 }

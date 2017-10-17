@@ -1,4 +1,5 @@
 export interface Session{
+    key: string;
     id: string;
     name: string;
     description: string;
@@ -6,9 +7,4 @@ export interface Session{
     speakers: any[];
     timeStart: string;
     timeEnd: string;
-}
-
-export interface SessionModel{
-    key: string;
-    session: any;
 }
