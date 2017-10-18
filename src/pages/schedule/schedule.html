@@ -13,27 +13,30 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content *ngIf="schedules" padding>
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
-    <ion-item-group *ngFor="let session of sessions | async">
+    <ion-item-group *ngFor="let schedule of schedules | async">
 
       <ion-item-divider sticky>
         <ion-label color="primary">
-          <h2>Test</h2>
+          <h2>{{schedule.time}}</h2>
         </ion-label>
       </ion-item-divider>
 
       <ion-item-sliding>
 
-        <button ion-item (click)="goToSessionDetail(session)">
-              <h3>{{session.name}}</h3>
-              <p>
-                {{session.timeStart}} &mdash;
-                {{session.timeEnd}}:
-                {{session.location}}
-              </p>
-            </button>
+        <div ion-item *ngFor="let session of schedule.sessions">
+          <!-- <button #item type="text" value="{{(session | async)?.name}}"></button> -->
+          
+          <button ion-item (click)="goToSessionDetail(item.value)">
+              <input style="display: none" type="text" #item value="{{(session | async)?.key}}">
+            <h3>{{(session | async)?.name}}</h3>
+            <p>
+              {{(session | async)?.timeStart}} &mdash; {{(session | async)?.timeEnd}}: {{(session | async)?.location}}
+            </p>
+          </button>
+        </div>
 
         <!-- <ion-item-options>
           <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">

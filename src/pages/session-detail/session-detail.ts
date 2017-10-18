@@ -1,6 +1,10 @@
+import { ScheduleService } from './../../services/schedule.service';
 import { Session } from './../../models/session.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
+
 
 /**
  * Generated class for the SessionDetailPage page.
@@ -16,10 +20,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SessionDetailPage {
 
-  session:Session;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.session = navParams.get('session');
-    console.log(this.session);
+  session;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
+    this.session = this.scheduleService.getSessionBySessionId(navParams.get('key'));
   }
 
 

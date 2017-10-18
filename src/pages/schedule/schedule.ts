@@ -1,9 +1,11 @@
+import { Observable } from 'rxjs/Observable';
+import { ScheduleViewModel } from './../../models/viewmodels/schedule.viewmodel.interface';
 import { ScheduleService } from './../../services/schedule.service';
 import { SessionDetailPage } from './../session-detail/session-detail';
 import { Group } from './../../models/group.interface';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
+
 
 /**
  * Generated class for the SchedulePage page.
@@ -19,13 +21,15 @@ import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 })
 export class SchedulePage {
 
-  sessions;
+  schedules;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService, private database: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
+   
   }
 
-  goToSessionDetail(session){
-    this.navCtrl.push(SessionDetailPage, {session: session});
+  goToSessionDetail(key){
+    // session.subscribe(x=>console.log(x));
+    this.navCtrl.push(SessionDetailPage,{key: key});
   }
 
   ngOnInit(){
@@ -33,7 +37,9 @@ export class SchedulePage {
     // this.scheduleService.getSchedules2().subscribe(console.log);
     // this.scheduleService.getSessionsWithTime().subscribe(console.log);
     // this.scheduleService.getSessionsWithTimeTest().subscribe(console.log);
-    this.sessions=this.scheduleService.getSchedules();
+    this.schedules=this.scheduleService.getSessionsWithTime();
+    // this.scheduleService.getSessionsWithTime().subscribe(console.log);
+    
   }
 
 }

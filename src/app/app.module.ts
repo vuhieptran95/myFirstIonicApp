@@ -4,7 +4,7 @@ import { ScheduleService } from './../services/schedule.service';
 import { SessionDetailPage } from './../pages/session-detail/session-detail';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { FIREBASE_CREDENTIALS, FIREBASE_CREDENTIALS_FLATTENED } from './firebase.credential';
+import { FIREBASE_CREDENTIALS, FIREBASE_CREDENTIALS_FLATTENED, FIREBASE_CREDENTIALS_MOSH } from './firebase.credential';
 import { SpeakersPage } from './../pages/speakers/speakers';
 import { MapPage } from './../pages/map/map';
 import { SchedulePage } from './../pages/schedule/schedule';
@@ -45,6 +45,8 @@ import { AngularFireModule } from "angularfire2";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,
+    // AngularFireModule.initializeApp(FIREBASE_CREDENTIALS_MOSH)
+    // AngularFireModule.initializeApp(FIREBASE_CREDENTIALS)
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS_FLATTENED)
   ],
   bootstrap: [IonicApp],

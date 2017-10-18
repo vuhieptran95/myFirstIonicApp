@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title *ngIf="session">{{session.name}}</ion-title>
+    <ion-title>{{(session | async)?.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,14 +15,14 @@
 
 <ion-content padding>
   <div *ngIf="session">
-    <h1>{{session.name}}</h1>
-    <h4 *ngFor="let speakerName of session.speakerNames">
+    <h1>{{(session | async)?.name}}</h1>
+    <!-- <h4 *ngFor="let speakerName of session.speakerNames">
       {{speakerName}}
-    </h4>
+    </h4> -->
     <p>
-      {{session.timeStart}} - {{session.timeEnd}}
+      {{(session | async)?.timeStart}} - {{(session | async)?.timeEnd}}
     </p>
-    <p>{{session.location}}</p>
-    <p>{{session.description}}</p>
+    <p>{{(session | async)?.location}}</p>
+    <p>{{(session | async)?.description}}</p>
   </div>
 </ion-content>

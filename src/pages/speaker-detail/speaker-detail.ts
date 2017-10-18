@@ -20,7 +20,6 @@ export class SpeakerDetailPage {
   speaker: Speaker = new Speaker();
   constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
     this.speaker = navParams.get('speaker');
-    this.scheduleService.getScheduleNameBySpeakerName('Burt Bear').subscribe(console.log);
   }
 
 

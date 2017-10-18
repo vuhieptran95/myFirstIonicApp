@@ -1,5 +1,5 @@
 {
-    "schedule": {
+    "sessions": {
         "Session1":{
             "name": "Breakfast",
             "timeStart": "8:00 am",
@@ -367,40 +367,40 @@
 
     "time":{
         "8:00 am":{
-            "Sesson1": true
+            "Session1": true
         },
         "9:15 am":{
-            "Sesson2": true,
-            "Sesson3": true,
-            "Sesson4": true
+            "Session2": true,
+            "Session3": true,
+            "Session4": true
         },
         "10:00 am":{
-            "Sesson5": true,
-            "Sesson6": true,
-            "Sesson7": true,
-            "Sesson8": true
+            "Session5": true,
+            "Session6": true,
+            "Session7": true,
+            "Session8": true
         },
         "11:00 am":{
-            "Sesson9": true,
-            "Sesson10": true,
-            "Sesson11": true
+            "Session9": true,
+            "Session10": true,
+            "Session11": true
         },
         "12:00 pm":{
-            "Sesson12": true
+            "Session12": true
         },
         "1:00 pm":{
-            "Sesson13": true,
-            "Sesson14": true,
-            "Sesson15": true
+            "Session13": true,
+            "Session14": true,
+            "Session15": true
         },
         "2:00 pm":{
-            "Sesson18": true,
-            "Sesson17": true,
-            "Sesson16": true
+            "Session18": true,
+            "Session17": true,
+            "Session16": true
         },
         "3:00 pm":{
-            "Sesson19": true,
-            "Sesson20": true
+            "Session19": true,
+            "Session20": true
         }
     }
 }

@@ -19,3 +19,14 @@ export const FIREBASE_CREDENTIALS_FLATTENED = {
     messagingSenderId: "446345668869"
     
     }
+
+export const FIREBASE_CREDENTIALS_MOSH = {
+    
+    apiKey: "AIzaSyCllbVL3rFlTdhu_uQ3PYrP8Qv8bjicmE0",
+    authDomain: "fir-codealong-5653e.firebaseapp.com",
+    databaseURL: "https://fir-codealong-5653e.firebaseio.com",
+    projectId: "fir-codealong-5653e",
+    storageBucket: "fir-codealong-5653e.appspot.com",
+    messagingSenderId: "864942521573"
+    
+    }
