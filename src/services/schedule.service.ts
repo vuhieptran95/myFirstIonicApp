@@ -1,6 +1,9 @@
+import { Observable } from 'rxjs/Observable';
+import { ScheduleModel } from './../models/viewmodels/schedule.model';
 import { Session } from './../models/session.interface';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from "angularfire2/database";
+import * as _ from 'lodash';
 
 @Injectable()
 export class ScheduleService {
@@ -8,40 +11,28 @@ export class ScheduleService {
    *
    */
   constructor(private database: AngularFireDatabase) {
-
+    
   }
 
   getSessionsWithTimeByQueryText(queryText) {
     return this.database.list('sessions', ref => ref.orderByChild('name').startAt(queryText)).valueChanges();
   }
 
-  getSessionsWithTime() {
+  getSessionsWithTime(): Observable<ScheduleModel[]> {
     return this.database.list('time').snapshotChanges().map(
       times => {
-        let models = [];
-        times.forEach(time => {
-          let sessions = [];
-          for (var sessionId in time.payload.val()) {
-            let x = this.database.object('sessions/' + sessionId).snapshotChanges().map(r => {
-              let session: Session = r.payload.val();
-              session.key = r.key;
-              return session;
-            })
-            sessions.push(x);
-          }
-          let model = {
-            time: time.key,
+        let scheduleModels: ScheduleModel[] = [];
+        times.forEach(listSessionId => {
+          let sessions: Observable<Session>[] = this.getSessionsFromListSessionId(listSessionId.payload.val());
+          let scheduleModel = {
+            time: listSessionId.key,
             sessions: sessions
           }
-          models.push(model);
+          scheduleModels.push(scheduleModel);
         })
-        return models;
+        return scheduleModels;
       }
     );
-  }
-
-  getSessionById(sessiongId: string) {
-    return this.database.object('sessions/' + sessiongId).valueChanges();
   }
 
   getSessionWithSpeakerNamesById(sessionId: string) {
@@ -76,5 +67,18 @@ export class ScheduleService {
         return sessions;
       }
     );
+  }
+
+  private getSessionsFromListSessionId(snapVal: any): Observable<Session>[] {
+    let sessions: Observable<Session>[] = [];
+    for (var sessionId in snapVal) {
+      let session = this.database.object('sessions/' + sessionId).snapshotChanges().map(r => {
+        let session: Session = r.payload.val();
+        session.key = r.key;
+        return session;
+      })
+      sessions.push(session);
+    }
+    return sessions;
   }
 }

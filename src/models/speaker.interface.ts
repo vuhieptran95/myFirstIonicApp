@@ -1,4 +1,5 @@
 export interface Speaker{
+    key: string;
     about: string;
     email: string;
     id: string;

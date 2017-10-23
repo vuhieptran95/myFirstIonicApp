@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { ScheduleModel } from './../../models/viewmodels/schedule.model';
 import { ScheduleService } from './../../services/schedule.service';
 import { SessionDetailPage } from './../session-detail/session-detail';
 import { Component } from '@angular/core';
@@ -18,7 +20,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SchedulePage {
 
-  schedules;
+  scheduleModels: Observable<ScheduleModel[]>;
   queryText: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
     this.scheduleService.getSessionsWithTimeByQueryText('Migrate').subscribe(console.log);
@@ -33,8 +35,7 @@ export class SchedulePage {
   }
 
   ionViewDidLoad(){
-    this.schedules=this.scheduleService.getSessionsWithTime();
-    
+    this.scheduleModels=this.scheduleService.getSessionsWithTime();
   }
 
 }
