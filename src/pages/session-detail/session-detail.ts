@@ -13,7 +13,6 @@ import 'rxjs/Rx';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-session-detail',
   templateUrl: 'session-detail.html',
@@ -22,7 +21,7 @@ export class SessionDetailPage {
 
   session;
   constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
-    this.session = this.scheduleService.getSessionBySessionId(navParams.get('key'));
+    this.session = this.scheduleService.getSessionWithSpeakerNamesById(navParams.get('key'));
   }
 
 

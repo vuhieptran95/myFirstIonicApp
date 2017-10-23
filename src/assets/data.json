@@ -223,7 +223,21 @@
             "location": "Everywhere",
             "email": "burt@example.com",
             "phone": "+1-541-754-3010",
-            "id": "1"
+            "id": "1",
+            "sessions":{
+                "Session2" : true,
+                "Session6" : true,
+                "Session10" : true,
+                "Session11" : true,
+                "Session13" : true,
+                "Session14" : true,
+                "Session15" : true,
+                "Session16" : true,
+                "Session17" : true,
+                "Session18" : true,
+                "Session19" : true,
+                "Session20" : true
+            }
         },
         "Speaker2":{
             "name": "Charlie Cheetah",
@@ -233,7 +247,11 @@
             "location": "Everywhere",
             "email": "charlie@example.com",
             "phone": "+1-541-754-3010",
-            "id": "2"
+            "id": "2",
+            "sessions":{
+                "Session3" : true,
+                "Session7" : true
+            }
         },
         "Speaker3":{
             "name": "Donald Duck",
@@ -243,7 +261,10 @@
             "location": "Everywhere",
             "email": "donald@example.com",
             "phone": "+1-541-754-3010",
-            "id": "3"
+            "id": "3",
+            "sessions":{
+                "Session8" : true
+            }
         },
         "Speaker4":{
             "name": "Eva Eagle",
@@ -253,7 +274,11 @@
             "location": "Everywhere",
             "email": "eva@example.com",
             "phone": "+1-541-754-3010",
-            "id": "4"
+            "id": "4",
+            "sessions":{
+                "Session5" : true,
+                "Session9" : true
+            }
         },
         "Speaker5":{
             "name": "Ellie Elephant",

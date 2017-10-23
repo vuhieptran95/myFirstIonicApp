@@ -1,3 +1,7 @@
+import { PopOverPage } from './../pages/pop-over/pop-over';
+
+import { MapService } from './../services/map.service';
+import { GoogleMap, GoogleMaps } from '@ionic-native/google-maps';
 import { SpeakerDetailPage } from './../pages/speaker-detail/speaker-detail';
 import { SpeakerService } from './../services/speaker.service';
 import { ScheduleService } from './../services/schedule.service';
@@ -39,7 +43,8 @@ import { AngularFireModule } from "angularfire2";
     MapPage,
     SpeakersPage,
     SessionDetailPage,
-    SpeakerDetailPage
+    SpeakerDetailPage,
+    PopOverPage
   ],
   imports: [
     BrowserModule,
@@ -62,13 +67,17 @@ import { AngularFireModule } from "angularfire2";
     SpeakersPage,
     MapPage,
     SessionDetailPage,
-    SpeakerDetailPage
+    SpeakerDetailPage,
+    PopOverPage
   ],
   providers: [
+    // GoogleMap,
+    GoogleMaps,
     StatusBar,
     SplashScreen,
     ScheduleService,
     SpeakerService,
+    MapService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

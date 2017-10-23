@@ -16,9 +16,10 @@
 <ion-content padding>
   <div *ngIf="session">
     <h1>{{(session | async)?.name}}</h1>
-    <!-- <h4 *ngFor="let speakerName of session.speakerNames">
-      {{speakerName}}
-    </h4> -->
+    <h4 *ngFor="let speakerName of (session | async)?.speakerNames">
+      {{(speakerName | async)}}
+      <!-- {{(((session | async)?.speakerNames[0]) | async)?.name}} -->
+    </h4>
     <p>
       {{(session | async)?.timeStart}} - {{(session | async)?.timeEnd}}
     </p>

@@ -3,7 +3,7 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.0.108:8101" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -77,13 +77,20 @@
     </platform>
     <allow-navigation href="http://192.168.1.71:8103" />
     <allow-navigation href="http://192.168.1.71:8101" />
+    <allow-navigation href="http://192.168.1.102:8100" />
+    <allow-navigation href="http://192.168.0.100:8103" />
+    <allow-navigation href="http://192.168.0.100:8102" />
+    <allow-navigation href="http://192.168.1.103:8100" />
+    <allow-navigation href="http://192.168.0.108:8101" />
     <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.5.1" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.0.11">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCueN6ITkNVhj4S4LUBGb7Ppp9_Zf2UmO8" />
+    </plugin>
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="https://github.com/apache/cordova-plugin-statusbar.git" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <allow-navigation href="http://192.168.1.102:8100" />
 </widget>
