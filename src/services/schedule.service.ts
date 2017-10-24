@@ -19,7 +19,7 @@ export class ScheduleService {
   }
 
   getSessionsWithTime(): Observable<ScheduleModel[]> {
-    return this.database.list('time').snapshotChanges().map(
+    return this.database.list('time', ref=>ref.orderByChild('id').startAt(1)).snapshotChanges().map(
       times => {
         let scheduleModels: ScheduleModel[] = [];
         times.forEach(listSessionId => {
@@ -72,12 +72,14 @@ export class ScheduleService {
   private getSessionsFromListSessionId(snapVal: any): Observable<Session>[] {
     let sessions: Observable<Session>[] = [];
     for (var sessionId in snapVal) {
-      let session = this.database.object('sessions/' + sessionId).snapshotChanges().map(r => {
-        let session: Session = r.payload.val();
-        session.key = r.key;
-        return session;
-      })
-      sessions.push(session);
+      if(sessionId!="id"){
+        let session = this.database.object('sessions/' + sessionId).snapshotChanges().map(r => {
+          let session: Session = r.payload.val();
+          session.key = r.key;
+          return session;
+        })
+        sessions.push(session);
+      }
     }
     return sessions;
   }

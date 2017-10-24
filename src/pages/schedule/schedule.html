@@ -18,6 +18,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content *ngIf="scheduleModels" padding>
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
@@ -31,7 +32,7 @@
 
       <ion-item-sliding>
 
-        <button ion-item *ngFor="let session of schedule.sessions" (click)="goToSessionDetail(item.value)">
+        <button animate="false" ion-item *ngFor="let session of schedule.sessions" (click)="goToSessionDetail(item.value)">
               <input style="display: none" type="text" #item value="{{(session | async)?.key}}">
             <h3>{{(session | async)?.name}}</h3>
             <p>

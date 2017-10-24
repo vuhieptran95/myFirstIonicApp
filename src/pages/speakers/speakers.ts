@@ -1,3 +1,5 @@
+import { NAVIGATION_GO_OPTION } from './../../custom-animation/navigation.animation';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { SessionDetailPage } from './../session-detail/session-detail';
 import { ScheduleService } from './../../services/schedule.service';
 import { SpeakerDetailPage } from './../speaker-detail/speaker-detail';
@@ -18,17 +20,20 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 })
 export class SpeakersPage {
 
+  // speakers = [];
   speakers;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private speakerService: SpeakerService , private scheduleService: ScheduleService, private actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private speakerService: SpeakerService , private scheduleService: ScheduleService, private actionSheetCtrl: ActionSheetController,private nativePageTransitions: NativePageTransitions) {
   }
 
 
   goToSpeakerDetail(speaker){
-    this.navCtrl.push(SpeakerDetailPage, {speaker: speaker});
+    this.nativePageTransitions.slide(NAVIGATION_GO_OPTION);
+    this.navCtrl.push(SpeakerDetailPage, {speaker: speaker},{animate: false});
   }
 
   goToSessionDetail(sessionId: string){
-    this.navCtrl.push(SessionDetailPage, {key: sessionId})
+    this.nativePageTransitions.slide(NAVIGATION_GO_OPTION);
+    this.navCtrl.push(SessionDetailPage, {key: sessionId}, {animate: false})
   }
 
   openSpeakerShare(speaker){
@@ -50,7 +55,7 @@ export class SpeakersPage {
   }
 
   openContact(speaker){
-    let actionSheet = this.actionSheetCtrl.create({
+    this.actionSheetCtrl.create({
       title: "Contact "+speaker.name,
       buttons: [
         {
@@ -71,7 +76,8 @@ export class SpeakersPage {
     }).present();
   }
 
-  ionViewDidLoad(){
+  ngOnInit(){
+    // this.speakerService.getSpeakersWithAttendedSessions().subscribe(x=>this.speakers = x);
     this.speakers = this.speakerService.getSpeakersWithAttendedSessions();
   }
 

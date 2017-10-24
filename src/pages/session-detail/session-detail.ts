@@ -1,3 +1,4 @@
+import { SchedulePage } from './../schedule/schedule';
 import { ScheduleService } from './../../services/schedule.service';
 import { Session } from './../../models/session.interface';
 import { Component } from '@angular/core';
@@ -21,8 +22,11 @@ export class SessionDetailPage {
 
   session;
   constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
-    this.session = this.scheduleService.getSessionWithSpeakerNamesById(navParams.get('key'));
+    
   }
 
+  ionViewDidLoad(){
+    this.session = this.scheduleService.getSessionWithSpeakerNamesById(this.navParams.get('key'));
+  }
 
 }

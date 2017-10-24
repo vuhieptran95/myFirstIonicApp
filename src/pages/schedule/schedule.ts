@@ -1,9 +1,11 @@
+import { NAVIGATION_GO_OPTION } from './../../custom-animation/navigation.animation';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 import { Observable } from 'rxjs/Observable';
 import { ScheduleModel } from './../../models/viewmodels/schedule.model';
 import { ScheduleService } from './../../services/schedule.service';
 import { SessionDetailPage } from './../session-detail/session-detail';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 
 /**
@@ -22,19 +24,29 @@ export class SchedulePage {
 
   scheduleModels: Observable<ScheduleModel[]>;
   queryText: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
-    this.scheduleService.getSessionsWithTimeByQueryText('Migrate').subscribe(console.log);
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private menuCtrl: MenuController,
+    private scheduleService: ScheduleService,
+    private nativePageTransitions: NativePageTransitions) {
+      
+      // this.menuCtrl.enable(false,'loggedOutMenu');
+    // this.scheduleService.getSessionsWithTimeByQueryText('Migrate').subscribe(console.log);
   }
 
   goToSessionDetail(key){
-    this.navCtrl.push(SessionDetailPage,{key: key});
+    this.nativePageTransitions.slide(NAVIGATION_GO_OPTION);
+    this.navCtrl.push(SessionDetailPage,{key: key},{animate: false});
   }
 
   updateSchedule(){
     
   }
 
-  ionViewDidLoad(){
+  
+
+  ngOnInit(){
     this.scheduleModels=this.scheduleService.getSessionsWithTime();
   }
 

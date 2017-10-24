@@ -18,7 +18,11 @@ export class SpeakerDetailPage {
 
   speaker: Speaker = new Speaker();
   constructor(public navCtrl: NavController, public navParams: NavParams, private scheduleService: ScheduleService) {
-    this.speaker = navParams.get('speaker');
+    
+  }
+
+  ionViewDidLoad(){
+    this.speaker = this.navParams.get('speaker');
   }
 
 

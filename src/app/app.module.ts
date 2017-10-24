@@ -29,6 +29,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TeachersPage } from "../pages/teachers/teachers";
 import { AngularFireModule } from "angularfire2";
+import {NativePageTransitions} from '@ionic-native/native-page-transitions';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { AngularFireModule } from "angularfire2";
     ScheduleService,
     SpeakerService,
     MapService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    NativePageTransitions
   ]
 })
 export class AppModule {}

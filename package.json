@@ -22,14 +22,17 @@
     "@angular/platform-browser-dynamic": "4.4.3",
     "@ionic-native/core": "4.3.0",
     "@ionic-native/google-maps": "^4.3.2",
+    "@ionic-native/native-page-transitions": "^4.3.2",
     "@ionic-native/splash-screen": "4.3.0",
     "@ionic-native/status-bar": "4.3.0",
     "@ionic/storage": "2.0.1",
     "@types/google-maps": "^3.2.0",
     "@types/lodash": "^4.14.78",
     "angularfire2": "^5.0.0-rc.3",
+    "com.telerik.plugins.nativepagetransitions": "^0.6.5",
     "cordova-android": "^6.2.3",
     "cordova-ios": "^4.5.1",
+    "cordova-plugin-crosswalk-webview": "^2.3.0",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-googlemaps": "^2.0.11",
     "cordova-plugin-ionic-webview": "^1.1.11",
@@ -66,6 +69,14 @@
       "ionic-plugin-keyboard": {},
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyCueN6ITkNVhj4S4LUBGb7Ppp9_Zf2UmO8"
+      },
+      "com.telerik.plugins.nativepagetransitions": {},
+      "cordova-plugin-crosswalk-webview": {
+        "XWALK_VERSION": "23+",
+        "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+        "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+        "XWALK_MODE": "embedded",
+        "XWALK_MULTIPLEAPK": "true"
       }
     }
   }

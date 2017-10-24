@@ -15,11 +15,11 @@
 
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngFor="let speaker of speakers | async">
     <ion-grid fixed>
-      <ion-row align-items-stretch *ngFor="let speaker of speakers | async">
+      <ion-row ion-list align-items-stretch>
 
-        <ion-col align-self-stretch align-self-center approxItemHeight="457px">
+        <ion-col align-self-stretch align-self-center>
 
           <ion-card>
             <ion-card-header>
