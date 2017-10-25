@@ -4,8 +4,9 @@ import { SessionDetailPage } from './../session-detail/session-detail';
 import { ScheduleService } from './../../services/schedule.service';
 import { SpeakerDetailPage } from './../speaker-detail/speaker-detail';
 import { SpeakerService } from './../../services/speaker.service';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { Subscription } from 'rxjs';
 
 /**
  * Generated class for the SpeakersPage page.
@@ -18,11 +19,23 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
   selector: 'page-speakers',
   templateUrl: 'speakers.html',
 })
-export class SpeakersPage {
+export class SpeakersPage{
+  ngOnDestroy(): void {
+    throw new Error("Method not implemented.");
+  }
 
-  // speakers = [];
-  speakers;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private speakerService: SpeakerService , private scheduleService: ScheduleService, private actionSheetCtrl: ActionSheetController,private nativePageTransitions: NativePageTransitions) {
+  speakers = [];
+  subscription: Subscription;
+  // speakers;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private speakerService: SpeakerService ,
+    private scheduleService: ScheduleService,
+    private actionSheetCtrl: ActionSheetController,
+    private nativePageTransitions: NativePageTransitions){
+
+    
   }
 
 
@@ -76,9 +89,12 @@ export class SpeakersPage {
     }).present();
   }
 
-  ngOnInit(){
-    // this.speakerService.getSpeakersWithAttendedSessions().subscribe(x=>this.speakers = x);
-    this.speakers = this.speakerService.getSpeakersWithAttendedSessions();
+  ionViewDidLoad(){
+    this.subscription = this.speakerService.getSpeakersWithAttendedSessions().subscribe(x=>this.speakers = x);
+  }
+
+  ionViewWillLeave(){
+    this.subscription.unsubscribe();
   }
 
 }

@@ -1,3 +1,4 @@
+import { BarcodePage } from './../pages/barcode/barcode';
 import { PopOverPage } from './../pages/pop-over/pop-over';
 
 import { MapService } from './../services/map.service';
@@ -27,9 +28,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { TeachersPage } from "../pages/teachers/teachers";
 import { AngularFireModule } from "angularfire2";
 import {NativePageTransitions} from '@ionic-native/native-page-transitions';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,12 @@ import {NativePageTransitions} from '@ionic-native/native-page-transitions';
     TabsPage,
     ItemDetailsPage,
     SchedulePage,
-    TeachersPage,
     MapPage,
     SpeakersPage,
     SessionDetailPage,
     SpeakerDetailPage,
-    PopOverPage
+    PopOverPage,
+    BarcodePage
   ],
   imports: [
     BrowserModule,
@@ -64,12 +65,12 @@ import {NativePageTransitions} from '@ionic-native/native-page-transitions';
     TabsPage,
     ItemDetailsPage,
     SchedulePage,
-    TeachersPage,
     SpeakersPage,
     MapPage,
     SessionDetailPage,
     SpeakerDetailPage,
-    PopOverPage
+    PopOverPage,
+    BarcodePage
   ],
   providers: [
     // GoogleMap,
@@ -79,6 +80,7 @@ import {NativePageTransitions} from '@ionic-native/native-page-transitions';
     ScheduleService,
     SpeakerService,
     MapService,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NativePageTransitions
   ]

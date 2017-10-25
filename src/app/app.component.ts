@@ -1,7 +1,7 @@
+import { BarcodePage } from './../pages/barcode/barcode';
 import { SpeakersPage } from './../pages/speakers/speakers';
 import { AboutPage } from './../pages/about/about';
 import { MapPage } from './../pages/map/map';
-import { TeachersPage } from './../pages/teachers/teachers';
 import { SchedulePage } from './../pages/schedule/schedule';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, NavController } from 'ionic-angular';
@@ -34,7 +34,8 @@ export class MyApp {
     { title: 'Schedule', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Speakers', name: 'TabsPage', component: TabsPage, tabComponent: SpeakersPage, index: 1, icon: 'contacts' },
     { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
-    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
+    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' },
+    { title: 'Barcode', name: 'TabsPage', component: TabsPage, tabComponent: BarcodePage, index: 4, icon: 'information-circle' }
   ]
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,

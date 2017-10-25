@@ -15,13 +15,13 @@
 
 
 <ion-content>
-  <ion-list *ngFor="let speaker of speakers | async">
+  <ion-list [virtualScroll]="speakers">
     <ion-grid fixed>
       <ion-row ion-list align-items-stretch>
 
         <ion-col align-self-stretch align-self-center>
 
-          <ion-card>
+          <ion-card *virtualItem="let speaker">
             <ion-card-header>
               <button ion-item detail-none (click)="goToSpeakerDetail(speaker)">
                 <ion-avatar item-start>
@@ -31,7 +31,7 @@
               </button>
             </ion-card-header>
 
-            <ion-card-content>
+            <!-- <ion-card-content>
               <ion-list>
                 <button ion-item *ngFor="let session of speaker.attendSessions | async" (click)="goToSessionDetail(session.key)">
                     <h3>{{session.name}}</h3>
@@ -41,7 +41,7 @@
                     <h3>About {{speaker.name}}</h3>
                   </button>
               </ion-list>
-            </ion-card-content>
+            </ion-card-content> -->
 
             <ion-row no-padding>
               <ion-col col-12 col-lg-auto text-center text-lg-left>
