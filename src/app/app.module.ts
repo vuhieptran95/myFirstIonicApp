@@ -1,3 +1,4 @@
+import { SettingPage } from './../pages/setting/setting';
 import { BarcodePage } from './../pages/barcode/barcode';
 import { PopOverPage } from './../pages/pop-over/pop-over';
 
@@ -31,6 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from "angularfire2";
 import {NativePageTransitions} from '@ionic-native/native-page-transitions';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     SessionDetailPage,
     SpeakerDetailPage,
     PopOverPage,
-    BarcodePage
+    BarcodePage,
+    SettingPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     SessionDetailPage,
     SpeakerDetailPage,
     PopOverPage,
-    BarcodePage
+    BarcodePage,
+    SettingPage
   ],
   providers: [
     // GoogleMap,
@@ -82,7 +87,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     MapService,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NativePageTransitions
+    NativePageTransitions,
+    AngularFireAuth,
+    Geolocation
   ]
 })
 export class AppModule {}
